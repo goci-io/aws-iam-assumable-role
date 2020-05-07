@@ -18,9 +18,9 @@ module "label" {
 }
 
 resource "random_uuid" "external_id" {
-   count = var.enabled && var.with_external_id ? 1 : 0
+  count = var.enabled && var.with_external_id ? 1 : 0
 
-   keepers = {
+  keepers = {
     rotation = var.rotate_external_id ? formatdate("YYYY-MM", timestamp()) : "disabled"
   }
 }
