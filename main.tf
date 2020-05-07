@@ -21,7 +21,7 @@ resource "random_uuid" "external_id" {
   count = var.enabled && var.with_external_id ? 1 : 0
 
   keepers = {
-    rotation = var.external_id_rotation
+    rotation = var.external_id_keeper
   }
 }
 
