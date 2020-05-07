@@ -14,14 +14,14 @@ module "label" {
   environment = var.environment
   attributes  = var.attributes
   delimiter   = var.delimiter
-  tags        = var.tags 
+  tags        = var.tags
 }
 
 data "aws_iam_policy_document" "trust_relation" {
   statement {
     effect  = "Allow"
     actions = ["sts:AssumeRole"]
-    
+
     dynamic "principals" {
       for_each = length(var.trusted_iam_arns) > 0 ? [1] : []
 
