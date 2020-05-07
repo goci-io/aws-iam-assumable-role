@@ -2,7 +2,7 @@
 
 #### Maintained by [@goci-io/prp-terraform](https://github.com/orgs/goci-io/teams/prp-terraform)
 
-![Terraform Validate](https://github.com/goci-io/aws-iam-assumable-role/workflows/Terraform%20Validate/badge.svg)
+![Terraform Validate](https://github.com/goci-io/aws-iam-assumable-role/workflows/terraform/badge.svg)
 
 This module creates an AWS IAM Role and attaches custom policy statements and existing policies to the role. In addition to that we support generating and rotating an [external id](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html). 
 
