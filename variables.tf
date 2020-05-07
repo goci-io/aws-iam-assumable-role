@@ -52,10 +52,10 @@ variable "with_external_id" {
   description = "Creates a random UUID as external ID and attaches an additional condition to the TrustRelation policy"
 }
 
-variable "rotate_external_id" {
-  type        = bool
-  default     = true
-  description = "Enables a kepper on the random UUID to rotate the value every month (pipeline must run)."
+variable "external_id_rotation" {
+  type        = string
+  default     = "initial"
+  description = "Changes to this value lead to a new external id (pipeline must run)."
 }
 
 variable "trusted_iam_arns" {
