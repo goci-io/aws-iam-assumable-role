@@ -17,6 +17,14 @@ module "label" {
   tags        = var.tags
 }
 
+resource "random_uuid" "external_id" {
+   count = var.enabled && var.with_external_id ? 1 : 0
+
+   keepers = {
+    rotation = var.rotate_external_id ? formatdate("YYYY-MM", timestamp()) : "disabled"
+  }
+}
+
 data "aws_iam_policy_document" "trust_relation" {
   statement {
     effect  = "Allow"
@@ -37,6 +45,16 @@ data "aws_iam_policy_document" "trust_relation" {
       content {
         type        = "Service"
         identifiers = var.trusted_services
+      }
+    }
+
+    dynamic "condition" {
+      for_each = var.with_external_id ? [1] : []
+
+      content {
+        variable = "sts:ExternalId"
+        test     = "StringEquals"
+        values   = random_uuid.external_id.*.result
       }
     }
   }
