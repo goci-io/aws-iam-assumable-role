@@ -77,7 +77,8 @@ variable "policy_attachments" {
 }
 
 variable "policy_statements" {
-  type        = list(any)
+  # list of actions, resources and optionally effect
+  type        = any
   default     = []
   description = "Policy attachments in Terraform style (effect, actions, resources)"
 }
