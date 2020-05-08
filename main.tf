@@ -15,6 +15,7 @@ module "label" {
   attributes  = var.attributes
   delimiter   = var.delimiter
   tags        = var.tags
+  name        = var.name
 }
 
 resource "random_uuid" "external_id" {
