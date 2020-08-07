@@ -82,3 +82,9 @@ variable "policy_statements" {
   default     = []
   description = "Policy attachments in Terraform style (effect, actions, resources)"
 }
+
+variable "force_detach_policies" {
+  type        = bool
+  default     = false
+  description = "Specifies to force detaching any policies the role has before destroying it"
+}
