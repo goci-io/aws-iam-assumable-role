@@ -74,10 +74,11 @@ data "aws_iam_policy_document" "permissions" {
 }
 
 resource "aws_iam_role" "role" {
-  count              = var.enabled ? 1 : 0
-  name               = module.label.id
-  tags               = module.label.tags
-  assume_role_policy = data.aws_iam_policy_document.trust_relation.json
+  count                 = var.enabled ? 1 : 0
+  name                  = module.label.id
+  tags                  = module.label.tags
+  force_detach_policies = var.force_detach_policies
+  assume_role_policy    = data.aws_iam_policy_document.trust_relation.json
 }
 
 resource "aws_iam_role_policy" "policy" {
