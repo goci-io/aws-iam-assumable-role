@@ -82,7 +82,7 @@ resource "aws_iam_role" "role" {
 }
 
 resource "aws_iam_role_policy" "policy" {
-  count  = var.enabled && length(var.policy_attachments) > 0 ? 1 : 0
+  count  = var.enabled && length(var.policy_statements) > 0 ? 1 : 0
   name   = module.label.id
   role   = join("", aws_iam_role.role.*.id)
   policy = data.aws_iam_policy_document.permissions.json
