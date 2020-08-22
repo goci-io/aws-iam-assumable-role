@@ -69,6 +69,16 @@ data "aws_iam_policy_document" "permissions" {
       effect    = lookup(statement.value, "effect", "Allow")
       actions   = lookup(statement.value, "actions")
       resources = lookup(statement.value, "resources")
+
+      dynamic "condition" {
+        for_each = lookup(statement.value, "conditions", [])
+
+        content {
+          test     = condition.value.test
+          values   = condition.value.values
+          variable = condition.value.variable
+        }
+      }
     }
   }
 }

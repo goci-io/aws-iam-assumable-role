@@ -80,7 +80,7 @@ variable "policy_statements" {
   # list of actions, resources and optionally effect
   type        = any
   default     = []
-  description = "Policy attachments in Terraform style (effect, actions, resources)"
+  description = "Policy attachments in Terraform style (effect, actions, resources, conditions)"
 }
 
 variable "force_detach_policies" {
