@@ -94,3 +94,9 @@ variable "force_detach_policies" {
   default     = false
   description = "Specifies to force detaching any policies the role has before destroying it"
 }
+
+variable "role_name_override" {
+  type        = string
+  default     = ""
+  description = "Full Override for the IAM Role Name"
+}
