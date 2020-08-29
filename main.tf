@@ -101,7 +101,7 @@ resource "aws_iam_role_policy" "policy" {
 resource "aws_iam_role_policy" "custom_json_policy" {
   count  = var.enabled && var.policy_json != "" ? 1 : 0
   role   = join("", aws_iam_role.role.*.id)
-  name   = module.label.id
+  name   = format("%s%scustom", module.label.id, var.delimiter)
   policy = var.policy_json
 }
 
