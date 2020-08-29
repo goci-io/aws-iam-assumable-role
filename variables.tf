@@ -83,6 +83,12 @@ variable "policy_statements" {
   description = "Policy attachments in Terraform style (effect, actions, resources, conditions)"
 }
 
+variable "policy_json" {
+  type        = string
+  default     = ""
+  description = "Full JSON Representation of Policy Document. Use data.aws_iam_policy_document.my_policy.json for example"
+}
+
 variable "force_detach_policies" {
   type        = bool
   default     = false
