@@ -18,6 +18,10 @@ module "label" {
   name        = var.name
 }
 
+locals {
+  iam_role_name = var.role_name_override == "" ? module.label.id : var.role_name_override
+}
+
 resource "random_uuid" "external_id" {
   count = var.enabled && var.with_external_id ? 1 : 0
 
@@ -85,7 +89,7 @@ data "aws_iam_policy_document" "permissions" {
 
 resource "aws_iam_role" "role" {
   count                 = var.enabled ? 1 : 0
-  name                  = module.label.id
+  name                  = local.iam_role_name
   tags                  = module.label.tags
   force_detach_policies = var.force_detach_policies
   assume_role_policy    = data.aws_iam_policy_document.trust_relation.json
